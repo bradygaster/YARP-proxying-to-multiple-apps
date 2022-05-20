@@ -1,0 +1,14 @@
+﻿{
+  "profiles": {
+    "MainSite": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "proxy",
+      "applicationUrl": "http://localhost:4999",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

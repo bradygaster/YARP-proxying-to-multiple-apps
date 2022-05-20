@@ -1,0 +1,28 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: mainsite
+services:
+- name: proxy
+  project: Proxy/Proxy.csproj
+  bindings: 
+  - port: 4999
+    protocol: http
+- name: mainsite
+  project: MainSite/MainSite.csproj
+  bindings: 
+  - port: 5000
+    protocol: http
+- name: subsite01
+  project: SubSite01/SubSite01.csproj
+  bindings: 
+  - port: 5001
+    protocol: http
+- name: subsite02
+  project: SubSite02/SubSite02.csproj
+  bindings: 
+  - port: 5002
+    protocol: http
