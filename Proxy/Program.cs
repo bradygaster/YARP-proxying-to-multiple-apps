@@ -1,3 +1,4 @@
+using Yarp.ReverseProxy.Configuration;
 using Yarp.ReverseProxy.Transforms;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,8 @@ _ = builder.Services.AddReverseProxy()
                         builderContext.AddOriginalHost(useOriginal: true);
                         builderContext.UseDefaultForwarders = true;
                     })
-                    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+                    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
+                        .AddConfigFilter<CustomConfigFilter>();
 
 var app = builder.Build();
 
