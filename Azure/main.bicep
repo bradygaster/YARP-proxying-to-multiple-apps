@@ -47,7 +47,7 @@ module yarpmainsite 'container_app.bicep' = {
     containerAppEnvironmentId: env.outputs.id
     registry: acr.name
     envVars: shared_config
-    externalIngress: true
+    externalIngress: false
   }
 }
 
@@ -62,7 +62,7 @@ module yarpsubsite01 'container_app.bicep' = {
     containerAppEnvironmentId: env.outputs.id
     registry: acr.name
     envVars: shared_config
-    externalIngress: true
+    externalIngress: false
   }
 }
 
@@ -77,7 +77,7 @@ module yarpsubsite02 'container_app.bicep' = {
     containerAppEnvironmentId: env.outputs.id
     registry: acr.name
     envVars: shared_config
-    externalIngress: true
+    externalIngress: false
   }
 }
 
