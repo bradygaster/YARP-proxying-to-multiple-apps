@@ -37,10 +37,10 @@ var shared_config = [
 ]
 
 // create the products api container app
-module mainsite 'container_app.bicep' = {
-  name: 'mainsite'
+module yarpmainsite 'container_app.bicep' = {
+  name: 'yarpmainsite'
   params: {
-    name: 'mainsite'
+    name: 'yarpmainsite'
     location: location
     registryPassword: acr.listCredentials().passwords[0].value
     registryUsername: acr.listCredentials().username
@@ -52,10 +52,10 @@ module mainsite 'container_app.bicep' = {
 }
 
 // create the inventory api container app
-module subsite01 'container_app.bicep' = {
-  name: 'subsite01'
+module yarpsubsite01 'container_app.bicep' = {
+  name: 'yarpsubsite01'
   params: {
-    name: 'subsite01'
+    name: 'yarpsubsite01'
     location: location
     registryPassword: acr.listCredentials().passwords[0].value
     registryUsername: acr.listCredentials().username
@@ -67,10 +67,10 @@ module subsite01 'container_app.bicep' = {
 }
 
 // create the inventory api container app
-module subsite02 'container_app.bicep' = {
-  name: 'subsite02'
+module yarpsubsite02 'container_app.bicep' = {
+  name: 'yarpsubsite02'
   params: {
-    name: 'subsite02'
+    name: 'yarpsubsite02'
     location: location
     registryPassword: acr.listCredentials().passwords[0].value
     registryUsername: acr.listCredentials().username
@@ -85,23 +85,23 @@ module subsite02 'container_app.bicep' = {
 var proxy_config = [
   {
     name: 'MainSite'
-    value: 'http://${mainsite.outputs.fqdn}'
+    value: 'http://${yarpmainsite.outputs.fqdn}'
   }
   {
     name: 'SubSite01'
-    value: 'http://${subsite01.outputs.fqdn}'
+    value: 'http://${yarpsubsite01.outputs.fqdn}'
   }
   {
     name: 'SubSite02'
-    value: 'http://${subsite02.outputs.fqdn}'
+    value: 'http://${yarpsubsite02.outputs.fqdn}'
   }
 ]
 
 // create the inventory api container app
-module proxy 'container_app.bicep' = {
-  name: 'proxy'
+module yarpproxy 'container_app.bicep' = {
+  name: 'yarpproxy'
   params: {
-    name: 'proxy'
+    name: 'yarpproxy'
     location: location
     registryPassword: acr.listCredentials().passwords[0].value
     registryUsername: acr.listCredentials().username
