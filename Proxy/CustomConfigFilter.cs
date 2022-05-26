@@ -49,12 +49,35 @@ namespace Yarp.ReverseProxy.Configuration
 
         public ValueTask<RouteConfig> ConfigureRouteAsync(RouteConfig route, ClusterConfig? cluster, CancellationToken cancel)
         {
-            if (route.Order.HasValue && route.Order.Value < 1)
+            var modifiedHosts = new List<string>();
+
+            foreach (var host in route.Match.Hosts)
             {
-                return new ValueTask<RouteConfig>(route with { Order = 1 });
+                if(_exp.IsMatch(host))
+                {
+                    var lookup = _exp.Matches(host)[0].Groups[1].Value;
+                    var newAddress = _configuration.GetValue<string>(lookup);
+                    modifiedHosts.Add(newAddress);
+                }
+                else
+                {
+                    modifiedHosts.Add(host);
+                }
             }
 
-            return new ValueTask<RouteConfig>(route);
+            var modifiedRoute = new RouteConfig
+            {
+                RouteId = route.RouteId,
+                ClusterId = route.ClusterId,
+                AuthorizationPolicy = route.AuthorizationPolicy,
+                CorsPolicy = route.CorsPolicy,
+                Metadata = route.Metadata,
+                Order = route.Order,
+                Transforms = route.Transforms,
+                Match = new RouteMatch { Hosts = modifiedHosts }
+            };
+
+            return new ValueTask<RouteConfig>(modifiedRoute);
         }
     }
 }
