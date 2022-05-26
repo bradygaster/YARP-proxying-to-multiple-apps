@@ -3,18 +3,12 @@
     "MainSite": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "proxy",
+      "launchUrl": "http://www.azurecontainerappswith.net:4999",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:4999"
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/proxy",
-      "publishAllPorts": true
     }
   }
 }
