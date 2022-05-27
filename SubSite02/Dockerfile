@@ -7,6 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["SubSite02/SubSite02.csproj", "SubSite02/"]
+COPY ["Monitoring/Monitoring.csproj", "Monitoring/"]
 RUN dotnet restore "SubSite02/SubSite02.csproj"
 COPY . .
 WORKDIR "/src/SubSite02"

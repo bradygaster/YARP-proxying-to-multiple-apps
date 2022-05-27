@@ -9,6 +9,8 @@ env:
   
   # alphanumeric string under 14 characters
   RESOURCE_GROUP_NAME: yarpsample
+  DNS: example.net
+  
 
   # specify your preferred region
   REGION: eastus
