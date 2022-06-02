@@ -35,6 +35,18 @@ var shared_config = [
     name: 'APPLICATIONINSIGHTS_CONNECTION_STRING'
     value: env.outputs.appInsightsConnectionString
   }
+  {
+    name: 'MainDomain'
+    value: 'www.${dns}'
+  }
+  {
+    name: 'SubDomain1'
+    value: 'subsite1.${dns}'
+  }
+  {
+    name: 'SubDomain2'
+    value: 'subsite2.${dns}'
+  }
 ]
 
 // create the products api container app
@@ -95,18 +107,6 @@ var proxy_config = [
   {
     name: 'SubSite02'
     value: 'http://${yarpsubsite02.outputs.fqdn}'
-  }
-  {
-    name: 'MainDomain'
-    value: 'www.${dns}'
-  }
-  {
-    name: 'SubDomain1'
-    value: 'subsite1.${dns}'
-  }
-  {
-    name: 'SubDomain2'
-    value: 'subsite2.${dns}'
   }
 ]
 

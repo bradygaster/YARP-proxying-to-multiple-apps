@@ -3,7 +3,7 @@
     "MainSite": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://www.azurecontainerappswith.net:4999",
+      "launchUrl": "http://www.example.net:4999",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
